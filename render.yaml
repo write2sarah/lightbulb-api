@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: lightbulb-api
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: python3 lightbulb_api.py
