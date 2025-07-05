@@ -1,6 +1,6 @@
 # 🌟 Lightbulb Tracker API + GPT Companion
 
-Welcome, explorer of sparks! This is the home of the **Lightbulb Tracker API**, a gentle backend tool that works in tandem with a custom GPT (Lightbulb Tracker V2) to log insights, somatic yeses, and idea flashes directly into your Obsidian vault.
+Welcome, explorer of sparks! This is the home of the [Lightbulb Tracker API](https://chatgpt.com/g/g-686800dc63fc819192aeb5b8212eb840-lightbulb-tracker-v2), a gentle backend tool that works in tandem with a custom GPT (Lightbulb Tracker V2) to log insights, somatic yeses, and idea flashes directly into your Obsidian vault.
 
 This repo is designed for dreamers, tinkerers, and thought-cartographers who want their GPTs to not only generate—but to *remember, organize,* and *file* the light.
 
