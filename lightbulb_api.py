@@ -11,36 +11,36 @@ def save_lightbulb():
     lightbulb = request.json
 
     safe_title = lightbulb['title'].replace(" ", "_").replace("/", "-")
-    filename = f"{lightbulb['id']***REMOVED***_{safe_title***REMOVED***.md"
+    filename = f"{lightbulb['id']}_{safe_title}.md"
     filepath = os.path.join(EXPORT_FOLDER, filename)
 
     content = f"""---
-id: {lightbulb['id']***REMOVED***
-title: {lightbulb['title']***REMOVED***
-thread_title: {lightbulb['thread_title']***REMOVED***
-internal_reference: {lightbulb['internal_reference']***REMOVED***
-context: {lightbulb['context']***REMOVED***
-tags: {lightbulb['tags']***REMOVED***
-somatic_signal: {lightbulb['somatic_signal']***REMOVED***
-insight: {lightbulb['insight']***REMOVED***
-created: {datetime.today().strftime('%Y-%m-%d')***REMOVED***
+id: {lightbulb['id']}
+title: {lightbulb['title']}
+thread_title: {lightbulb['thread_title']}
+internal_reference: {lightbulb['internal_reference']}
+context: {lightbulb['context']}
+tags: {lightbulb['tags']}
+somatic_signal: {lightbulb['somatic_signal']}
+insight: {lightbulb['insight']}
+created: {datetime.today().strftime('%Y-%m-%d')}
 ---
 
-# {lightbulb['title']***REMOVED***
+# {lightbulb['title']}
 
-{lightbulb['insight']***REMOVED***
+{lightbulb['insight']}
 
-_Context:_ {lightbulb['context']***REMOVED***
+_Context:_ {lightbulb['context']}
 
-_Somatic signal:_ {lightbulb['somatic_signal']***REMOVED***
+_Somatic signal:_ {lightbulb['somatic_signal']}
 
-_Tags:_ {' '.join(f'#{tag***REMOVED***' for tag in lightbulb['tags'])***REMOVED***
+_Tags:_ {' '.join(f'#{tag}' for tag in lightbulb['tags'])}
 """
 
     with open(filepath, 'w') as f:
         f.write(content)
 
-    return jsonify({"status": "saved", "path": filepath***REMOVED***)
+    return jsonify({"status": "saved", "path": filepath})
 
 if __name__ == '__main__':
     app.run(port=5001)
