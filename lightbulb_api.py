@@ -40,7 +40,7 @@ _Tags:_ {' '.join(f'#{tag}' for tag in lightbulb['tags'])}
     with open(filepath, 'w') as f:
         f.write(content)
 
-    return jsonify({"status": "saved", "path": filepath})
+    return jsonify({"status": "saved", "success"}), 200
 
 if __name__ == '__main__':
     app.run(port=5001)
