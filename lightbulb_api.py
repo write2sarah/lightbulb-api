@@ -42,5 +42,8 @@ _Tags:_ {' '.join(f'#{tag}' for tag in lightbulb['tags'])}
 
     return jsonify({"message": "Lightbulb entry created successfully", "success": True}), 201
 
+import os
+
 if __name__ == '__main__':
-    app.run(port=5001)
+    port = int(os.environ.get("PORT", 5001))
+    app.run(host='0.0.0.0', port=port)
