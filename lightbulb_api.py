@@ -4,17 +4,24 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-EXPORT_FOLDER = "/Users/sarahensor/Vaults/Vaultaire/01 ZETTELKASTEN"
+# ✅ Use a local directory that works in Render
+EXPORT_FOLDER = "./notes"
 
-@app.route('/lightbulb', methods=['POST'])
+@app.route('/createLightbulb', methods=['POST'])
 def save_lightbulb():
-    lightbulb = request.json
+    try:
+        lightbulb = request.get_json()
 
-    safe_title = lightbulb['title'].replace(" ", "_").replace("/", "-")
-    filename = f"{lightbulb['id']}_{safe_title}.md"
-    filepath = os.path.join(EXPORT_FOLDER, filename)
+        # Make sure the export folder exists
+        os.makedirs(EXPORT_FOLDER, exist_ok=True)
 
-    content = f"""---
+        # Safe filename
+        safe_title = lightbulb['title'].replace(" ", "_").replace("/", "-")
+        filename = f"{lightbulb['id']}_{safe_title}.md"
+        filepath = os.path.join(EXPORT_FOLDER, filename)
+
+        # Full markdown content with frontmatter
+        content = f"""---
 id: {lightbulb['id']}
 title: {lightbulb['title']}
 thread_title: {lightbulb['thread_title']}
@@ -37,12 +44,13 @@ _Somatic signal:_ {lightbulb['somatic_signal']}
 _Tags:_ {' '.join(f'#{tag}' for tag in lightbulb['tags'])}
 """
 
-    with open(filepath, 'w') as f:
-        f.write(content)
+        with open(filepath, 'w') as f:
+            f.write(content)
 
-    return jsonify({"message": "Lightbulb entry created successfully", "success": True}), 201
+        return jsonify({"message": "Lightbulb entry created successfully", "success": True}), 201
 
-import os
+    except Exception as e:
+        return jsonify({"error": str(e), "success": False}), 500
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5001))
