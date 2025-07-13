@@ -103,8 +103,11 @@ Copy the generated https://... URL and plug it into your GPT’s backend endpoin
 ## 🔐 Security Note
 
 This tool is designed for your vault. To keep your insights safe:
+
 	•	Don’t expose your EXPORT_FOLDER path in public repos
+ 
 	•	Always use a strong API key in your .env file
+ 
 	•	Never commit .env to Git
 
 Need to scrub old secrets? Use BFG Repo Cleaner.
