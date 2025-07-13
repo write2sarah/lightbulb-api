@@ -8,36 +8,33 @@ This repo is designed for dreamers, tinkerers, and thought-cartographers who wan
 
 ## 🧠 What This Is
 
-A Flask-based Python API that:
+A local Python API (built with Flask) that:
+•	Receives structured insight data from a Custom GPT
+•	Writes .md files in Zettelkasten-friendly format
+•	Saves them directly into a folder you control—like your Obsidian vault
 
-* Receives structured insight data from a custom GPT
-* Writes `.md` files in Zettelkasten-friendly format
-* Organizes entries in a local folder (e.g. your Obsidian vault)
-
-Optionally deployable via [Render](https://render.com) or run locally via Flask + Ngrok.
+You host it. You own it. No external deployment required.
 
 ---
 
 ## 🤖 How It Works With the GPT
 
 You’ll need:
+	•	A Custom GPT (like Lightbulb Tracker V2)
+	•	This API running on your local machine (using Flask + optional Ngrok)
 
-* A **Custom GPT** (Lightbulb Tracker V2)
-* This API, deployed and reachable (e.g., on `https://your-app.onrender.com`)
+When a lightbulb strikes in conversation with your GPT, it:
+	1.	Gathers your insight’s metadata (title, tags, somatic signal, etc.)
+	2.	Sends a POST request to your local API endpoint
+	3.	This API writes a .md file with frontmatter into your vault
 
-When a lightbulb strikes in conversation with your GPT, the GPT:
-
-1. Gathers the structured fields (title, tags, somatic signal, etc.)
-2. Sends a POST request to this API’s `/lightbulb` endpoint
-3. This API writes it to your folder as a `.md` file with YAML frontmatter
-
-You now have a tangible trace of ephemeral insight.
+Voilà—your insight has a home.
 
 ---
 
 ## 🗂️ File Format
 
-The markdown files include 8 metadata fields:
+Eash insight is saved like this:
 
 ```yaml
 ---
@@ -53,72 +50,59 @@ created: 2025-07-01
 ---
 ```
 
-With friendly rendering below:
+And rendered as:
 
 ```md
 # Example Lightbulb
 
 I think I just met my true question.
 
-_Context:_ This came to me while journaling
-
-_Somatic signal:_ jaw dropped, eyes welled up
-
+_Context:_ This came to me while journaling  
+_Somatic signal:_ jaw dropped, eyes welled up  
 _Tags:_ #insight #identity #metaphor
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Getting Started (Local)
 
-### 📍 Local Use
-
-1. Clone this repo
-2. Create a virtual environment
-3. Install dependencies
-
+### 1. Clone the Repo
 ```bash
+git clone https://github.com/write2sarah/lightbulb-api.git
 cd lightbulb-api
+```
+### 2. Set up Environment
+```bash
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
-
-4. Run the server:
+### 3. Add a .env File
+```env
+API_KEY=your_secret_key_here
+EXPORT_FOLDER=/path/to/your/Obsidian/vault/folder
+```
+### 4. Run the API
 
 ```bash
 python lightbulb_api.py
 ```
 
-5. Use [ngrok](https://ngrok.com) to expose your localhost:
+### 5. (Optional) Use [ngrok](https://ngrok.com)
 
 ```bash
 ngrok http 5001
 ```
-
-Update your GPT’s endpoint to use the ngrok URL.
-
-### 🌐 Deploy to Render (recommended)
-
-1. Fork this repo to your GitHub
-2. Create a [Render account](https://render.com)
-3. Click "New Web Service", connect your GitHub repo
-4. Use these settings:
-
-   * **Build Command**: `pip install -r requirements.txt`
-   * **Start Command**: `python lightbulb_api.py`
-   * **Runtime**: Python 3.11+
-5. Add environment variables if needed (e.g., `EXPORT_FOLDER` path)
-
----
+Copy the generated https://... URL and plug it into your GPT’s backend endpoint setting.
 
 ## 🔐 Security Note
 
-If you're using this for personal insights, keep it private. If you ever put it public:
+This tool is designed for your vault. To keep your insights safe:
+	•	Don’t expose your EXPORT_FOLDER path in public repos
+	•	Always use a strong API key in your .env file
+	•	Never commit .env to Git
 
-* Remove your `EXPORT_FOLDER` path or use environment variables
-* Scrub API keys from your history (see [BFG Repo Cleaner](https://rtyley.github.io/bfg-repo-cleaner/))
-* Consider deploying with GitHub Secrets + `.env` support
+Need to scrub old secrets? Use BFG Repo Cleaner.
 
 ---
 
@@ -132,20 +116,40 @@ python-dotenv==1.0.1
 ---
 
 ## 🌱 Coming Soon
+	•	Metadata templating
+	•	Constellation-based tag clustering
+	•	Local-first Obsidian Sync Engine
+	•	GPT whisperback modes + tag suggestions
 
-* Optional OpenAI key integration for GPT-side validation
-* Metadata templating
-* Tag clustering + constellation visualization
-* Obsidian Sync Engine (v2!)
+⸻
 
----
-
-## 🪄 Future Ideas
-	•	Multi-tag filtering
+## 🧪 Future Magic
 	•	Timestamp-based sorting
 	•	Obsidian plugin integration
-	•	Google Sheets export
+	•	Google Sheets or SQLite export
 	•	AI-summarized Zettel clusters
+	•	Fog/fire filtering by state or phase
+
+⸻
+
+## ✨ Created by Sarah Ensor
+
+A writer, strategist, and soul-coded system builder exploring creative collaboration with AI, human rhythms, and poetic infrastructure.
+
+🌐 write2sarah.com
+
+⸻
+
+📖 License
+
+MIT License. Fork it, remix it, make it yours.
+
+⸻
+
+Let me know if you’d like to:
+	•	Add screenshots or example .md output
+	•	Include the GPT action JSON block
+	•	Add a “Troubleshooting” section
 
 ---
 
