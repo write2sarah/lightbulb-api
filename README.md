@@ -23,7 +23,9 @@ You host it. You own it. No external deployment required.
 ## 🤖 How It Works With the GPT
 
 You’ll need:
+
 	• A Custom GPT (like Lightbulb Tracker V2)
+ 
 	• This API running on your local machine (using Flask + optional Ngrok)
 
 When a lightbulb strikes in conversation with your GPT, it:
@@ -119,18 +121,27 @@ python-dotenv==1.0.1
 ---
 
 ## 🌱 Coming Soon
+
 • Metadata templating
+
 • Constellation-based tag clustering
+
 • Local-first Obsidian Sync Engine
+
 • GPT whisperback modes + tag suggestions
 
 ⸻
 
 ## 🧪 Future Magic
+
 • Timestamp-based sorting
+
 • Obsidian plugin integration
+
 • Google Sheets or SQLite export
+
 • AI-summarized Zettel clusters
+
 • Fog/fire filtering by state or phase
 
 ⸻
