@@ -9,9 +9,9 @@ This repo is designed for dreamers, tinkerers, and thought-cartographers who wan
 ## 🧠 What This Is
 
 A local Python API (built with Flask) that:
-	• Receives structured insight data from a Custom GPT
-	• Writes .md files in Zettelkasten-friendly format
-	• Saves them directly into a folder you control—like your Obsidian vault
+• Receives structured insight data from a Custom GPT
+• Writes .md files in Zettelkasten-friendly format
+• Saves them directly into a folder you control—like your Obsidian vault
 
 You host it. You own it. No external deployment required.
 
